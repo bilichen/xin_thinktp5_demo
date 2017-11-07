@@ -83,7 +83,7 @@ class Index
         dump($result);
     }
 
-    //model模型调用数据库方法(查)
+    //model模型调用数据库方法(删)
     public function model_del(){
         //1、对象调用
 //        $staff = new Staff();
@@ -94,6 +94,25 @@ class Index
         //2、静态调用
         $where = ['id'=>12];
         Staff::destroy($where);
+    }
+
+    //model模型读取器demo
+    public function model_read(){
+        $where = ['id'=>4];
+        $staff = Staff::find($where);
+        return $staff->salary;
+    }
+    //model模型修改器demo
+    public function model_write(){
+        $staff = new Staff();
+        $data = [
+            'name'=>'扬康',
+            'age' => 26,
+            'salary' => 5000,
+            'dept' =>'保安部'
+        ];
+        $result =  $staff->save($data);
+        dump($result);
     }
 
 }
